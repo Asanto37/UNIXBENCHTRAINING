@@ -26,5 +26,3 @@ echo "How many files are in this directory?"
  done
 
  echo "Yippy!! , You're correct ! "
-
-
