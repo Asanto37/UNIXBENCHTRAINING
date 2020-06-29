@@ -3,24 +3,28 @@
 
 #User's input
 
-read -p "  Guess how many files are in this directory " usr_guess
+echo "How many files are in this directory?"
+ read answer
 
-echo $(game_answer $usr_guess $files)
-echo ""
+ function files {
+        local usr_guess=$(ls -l | wc -l)-1
+        echo $usr_guess
+ }
 
-#game functions:
+ number=$(files)
 
-function game_answer {
-        if [[ $1 <  $2 ]]
+ while [[ $usr_guess -ne $number ]]
+ do
+        if [[ $usr_guessr >  $number ]]
         then
-          echo "I'm sorry, your guess was too low, please try again. "
-        elif [[ $1 > $2 ]]
-          echo "I'm sorry, your guess was too high, please try again. "
+                echo "I'm sorry , your guess was high please try again "
         else
-          echo "Yippy !! you guessed correctly.  "
+                echo "I'm sorry , your guess was low please try again "
         fi
-}
-      
-#loop
-while [[$files == usr_guess ]]
-  do
+
+        read usr_guess
+ done
+
+ echo "Yippy!! , You're correct ! "
+
+
